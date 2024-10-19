@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/:path(.*)", "destination": "https://api.privatbank.ua/:path" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
