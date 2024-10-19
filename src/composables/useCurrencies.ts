@@ -29,7 +29,13 @@ export function useCurrencies() {
 
       const response = await fetch(url, {
         method: "GET",
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        mode: "no-cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": "true"
+        }
       })
 
       if (!response.ok) {
