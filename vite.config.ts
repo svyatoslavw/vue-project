@@ -24,6 +24,14 @@ export default defineConfig({
       "/api": {
         target: "https://api.privatbank.ua",
         changeOrigin: true,
+        secure: false,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          "Content-Type": "application/json"
+        },
         rewrite: (path) => path.replace(/^\/api/, "")
       }
     }

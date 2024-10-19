@@ -7,10 +7,7 @@ const GOLD = "XAU"
 
 export function useCurrencies() {
   const date = new Date(new Date().setDate(new Date().getDate() - 1))
-  const isProduction = import.meta.env.PROD
-  const baseUrl = isProduction ? "https://api.privatbank.ua" : "/api"
-
-  const url = `${baseUrl}/p24api/exchange_rates?date=${formatDate(date)}`
+  const url = `/api/p24api/exchange_rates?date=${formatDate(date)}`
 
   const items = ref<ICurrencyItem[]>([])
 
@@ -29,13 +26,7 @@ export function useCurrencies() {
 
       const response = await fetch(url, {
         method: "GET",
-        mode: "no-cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true"
-        }
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
       })
 
       if (!response.ok) {
