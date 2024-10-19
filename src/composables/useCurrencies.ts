@@ -7,7 +7,7 @@ const GOLD = "XAU"
 
 export function useCurrencies() {
   const date = new Date(new Date().setDate(new Date().getDate() - 1))
-  const url = `/api/p24api/exchange_rates?date=${formatDate(date)}`
+  const url = `/${process.env.NODE_ENV === "production" ? "https://api.privatbank.ua" : "/api"}/p24api/exchange_rates?date=${formatDate(date)}`
 
   const items = ref<ICurrencyItem[]>([])
 
